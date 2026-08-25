@@ -2,6 +2,11 @@
 
 #import <UIKit/UIKit.h>
 
+@interface UIWindow (DePukePrivate)
+- (void)_setSecure:(BOOL)secure;
+- (BOOL)_isSecure;
+@end
+
 @class DePukeDotView;
 
 @interface DePukeOverlayViewController : UIViewController

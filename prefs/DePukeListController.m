@@ -1,6 +1,7 @@
 #import "DePukeListController.h"
 #import "../Tweak.h"
 #import <spawn.h>
+#import <unistd.h>
 
 extern char **environ;
 
