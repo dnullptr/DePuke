@@ -34,7 +34,8 @@ Apple dropped **Vehicle Motion Cues** in iOS 18 to fix sensory conflict by putti
   - Radius / Size slider
   - Opacity & Theme presets (iOS 18 Dark, Clean Light, Neon Cyan Glow)
   - G-force sensitivity & max travel offset
-- ⚡ **Zero-Respring Live Reloading**: Tweaking preferences in Settings takes effect instantly via Darwin notifications.
+- 🎛️ **Native Control Center Toggle (CCSupport)**: Toggle motion cues on/off on the fly right from your Control Center.
+- ⚡ **Zero-Respring Live Reloading**: Tweaking preferences in Settings or tapping the CC module takes effect instantly via Darwin notifications.
 
 ---
 

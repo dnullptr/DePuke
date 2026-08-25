@@ -13,5 +13,5 @@ DePuke_FRAMEWORKS = UIKit CoreGraphics CoreMotion QuartzCore CoreLocation
 
 include $(THEOS_MAKE_PATH)/tweak.mk
 
-SUBPROJECTS += prefs
+SUBPROJECTS += prefs cc
 include $(THEOS_MAKE_PATH)/aggregate.mk

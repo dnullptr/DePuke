@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>CFBundleDevelopmentRegion</key>
+    <string>en</string>
+    <key>CFBundleExecutable</key>
+    <string>DePukeCC</string>
+    <key>CFBundleIdentifier</key>
+    <string>com.dnullptr.depukecc</string>
+    <key>CFBundleInfoDictionaryVersion</key>
+    <string>6.0</string>
+    <key>CFBundlePackageType</key>
+    <string>BNDL</string>
+    <key>CFBundleShortVersionString</key>
+    <string>1.0.1</string>
+    <key>CFBundleSignature</key>
+    <string>????</string>
+    <key>CFBundleVersion</key>
+    <string>1.0.1</string>
+    <key>NSPrincipalClass</key>
+    <string>DePukeCC</string>
+    <key>CFBundleDisplayName</key>
+    <string>DePuke</string>
+    <key>CFBundleName</key>
+    <string>DePuke</string>
+    <key>UIDeviceFamily</key>
+    <array>
+        <integer>1</integer>
+        <integer>2</integer>
+    </array>
+    <key>CFBundleSupportedPlatforms</key>
+    <array>
+        <string>iPhoneOS</string>
+    </array>
+    <key>MinimumOSVersion</key>
+    <string>15.0</string>
+    <key>CCSModuleSize</key>
+    <dict>
+        <key>Portrait</key>
+        <dict>
+            <key>Width</key>
+            <integer>1</integer>
+            <key>Height</key>
+            <integer>1</integer>
+        </dict>
+        <key>Landscape</key>
+        <dict>
+            <key>Width</key>
+            <integer>1</integer>
+            <key>Height</key>
+            <integer>1</integer>
+        </dict>
+    </dict>
+    <key>CCSSupportedModuleSizes</key>
+    <array>
+        <string>1x1</string>
+    </array>
+</dict>
+</plist>

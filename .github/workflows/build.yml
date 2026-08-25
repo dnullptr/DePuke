@@ -2,11 +2,13 @@ name: Build DePuke Package
 
 on:
   push:
+
     branches: [ main, master ]
+
     tags:
       - 'v*'
   pull_request:
-    branches: [ main, master ]
+    branches: [ main, master, dist ]
   workflow_dispatch:
 
 permissions:

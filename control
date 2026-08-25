@@ -1,7 +1,7 @@
 Package: com.dnullptr.depuke
 Name: DePuke
-Depends: mobilesubstrate (>= 0.9.5000), preferenceloader
-Version: 1.0.0
+Depends: mobilesubstrate (>= 0.9.5000), preferenceloader, com.opa334.ccsupport
+Version: 1.0.1
 Architecture: iphoneos-arm64
 Description: Backport of iOS 18 Vehicle Motion Cues for iOS 15.0 - 16.5+ (Rootless).
 Maintainer: dnullptr
