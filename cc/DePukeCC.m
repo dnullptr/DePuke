@@ -1,5 +1,12 @@
 #import "DePukeCC.h"
 #import "../Tweak.h"
+#import <dlfcn.h>
+
+__attribute__((constructor))
+static void DePukeCCInit(void) {
+    dlopen("/System/Library/PrivateFrameworks/ControlCenterUIKit.framework/ControlCenterUIKit", RTLD_NOW);
+    dlopen("/System/Library/PrivateFrameworks/ControlCenterUI.framework/ControlCenterUI", RTLD_NOW);
+}
 
 static void CCReloadPreferencesNotificationCallback(CFNotificationCenterRef center, void *observer, CFStringRef name, const void *object, CFDictionaryRef userInfo) {
     DePukeCC *module = (__bridge DePukeCC *)observer;

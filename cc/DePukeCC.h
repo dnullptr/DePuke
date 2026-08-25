@@ -2,7 +2,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CCUIToggleModule : NSObject
+@protocol CCUIContentModule <NSObject>
+@end
+
+@interface CCUIToggleModule : NSObject <CCUIContentModule>
 @property (nonatomic, readonly) UIViewController *contentViewController;
 - (void)setSelected:(BOOL)selected;
 - (BOOL)isSelected;
