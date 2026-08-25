@@ -3,6 +3,7 @@
 #import <Preferences/PSListController.h>
 #import <Preferences/PSSpecifier.h>
 #import <Preferences/PSTableCell.h>
+#import <Preferences/PSHeaderFooterView.h>
 #import <UIKit/UIKit.h>
 
 @interface DePukeListController : PSListController
@@ -10,5 +11,5 @@
 - (void)resetDefaults;
 @end
 
-@interface DePukeHeaderView : PSTableCell
+@interface DePukeHeaderView : UIView <PSHeaderFooterView>
 @end

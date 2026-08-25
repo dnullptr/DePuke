@@ -75,25 +75,28 @@ extern char **environ;
 
 #pragma mark - DePukeHeaderView
 
+@interface DePukeHeaderView ()
+@property (nonatomic, strong) UIImageView *headerLogoView;
+@property (nonatomic, strong) UILabel *headerTitleLabel;
+@property (nonatomic, strong) UILabel *headerSubtitleLabel;
+@property (nonatomic, strong) UIView *headerDotsRow;
+@end
+
 @implementation DePukeHeaderView
 
 - (instancetype)initWithSpecifier:(PSSpecifier *)specifier {
-    self = [super initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"DePukeHeaderView" specifier:specifier];
+    self = [super initWithFrame:CGRectZero];
     if (self) {
         self.backgroundColor = [UIColor clearColor];
         
-        UIView *containerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 180)];
-        containerView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-        
         // Logo ImageView
-        UIImageView *logoView = [[UIImageView alloc] initWithFrame:CGRectMake((containerView.frame.size.width - 64) / 2.0, 16, 64, 64)];
-        logoView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
-        logoView.contentMode = UIViewContentModeScaleAspectFit;
-        logoView.layer.cornerRadius = 14.0;
+        _headerLogoView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 64.0, 64.0)];
+        _headerLogoView.contentMode = UIViewContentModeScaleAspectFit;
+        _headerLogoView.layer.cornerRadius = 14.0;
         if (@available(iOS 13.0, *)) {
-            logoView.layer.cornerCurve = kCACornerCurveContinuous;
+            _headerLogoView.layer.cornerCurve = kCACornerCurveContinuous;
         }
-        logoView.layer.masksToBounds = YES;
+        _headerLogoView.layer.masksToBounds = YES;
         
         NSBundle *bundle = [NSBundle bundleForClass:[self class]];
         UIImage *logoImg = [UIImage imageNamed:@"logo" inBundle:bundle compatibleWithTraitCollection:nil];
@@ -103,44 +106,56 @@ extern char **environ;
                 logoImg = [UIImage imageWithContentsOfFile:logoPath];
             }
         }
-        logoView.image = logoImg;
-        [containerView addSubview:logoView];
+        _headerLogoView.image = logoImg;
+        [self addSubview:_headerLogoView];
         
         // Title Label
-        UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 88, containerView.frame.size.width, 36)];
-        titleLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-        titleLabel.text = @"DePuke";
-        titleLabel.textAlignment = NSTextAlignmentCenter;
-        titleLabel.font = [UIFont systemFontOfSize:28 weight:UIFontWeightBold];
-        titleLabel.textColor = [UIColor labelColor];
-        [containerView addSubview:titleLabel];
+        _headerTitleLabel = [[UILabel alloc] init];
+        _headerTitleLabel.text = @"DePuke";
+        _headerTitleLabel.textAlignment = NSTextAlignmentCenter;
+        _headerTitleLabel.font = [UIFont systemFontOfSize:28 weight:UIFontWeightBold];
+        _headerTitleLabel.textColor = [UIColor labelColor];
+        [self addSubview:_headerTitleLabel];
         
         // Subtitle Label
-        UILabel *subtitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 126, containerView.frame.size.width, 22)];
-        subtitleLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-        subtitleLabel.text = @"Vehicle Motion Cues Backport";
-        subtitleLabel.textAlignment = NSTextAlignmentCenter;
-        subtitleLabel.font = [UIFont systemFontOfSize:14 weight:UIFontWeightMedium];
-        subtitleLabel.textColor = [UIColor secondaryLabelColor];
-        [containerView addSubview:subtitleLabel];
+        _headerSubtitleLabel = [[UILabel alloc] init];
+        _headerSubtitleLabel.text = @"Vehicle Motion Cues Backport";
+        _headerSubtitleLabel.textAlignment = NSTextAlignmentCenter;
+        _headerSubtitleLabel.font = [UIFont systemFontOfSize:14 weight:UIFontWeightMedium];
+        _headerSubtitleLabel.textColor = [UIColor secondaryLabelColor];
+        [self addSubview:_headerSubtitleLabel];
         
         // Animated Cue Dot Indicator preview
-        UIView *dotsRow = [[UIView alloc] initWithFrame:CGRectMake((containerView.frame.size.width - 80) / 2.0, 154, 80, 8)];
-        dotsRow.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
+        _headerDotsRow = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 80.0, 8.0)];
         for (int i = 0; i < 5; i++) {
             UIView *miniDot = [[UIView alloc] initWithFrame:CGRectMake(i * 18, 1, 6, 6)];
             miniDot.layer.cornerRadius = 3.0;
             miniDot.backgroundColor = [UIColor colorWithRed:0.20 green:0.60 blue:1.0 alpha:0.8];
-            [dotsRow addSubview:miniDot];
+            [_headerDotsRow addSubview:miniDot];
         }
-        [containerView addSubview:dotsRow];
-        
-        [self.contentView addSubview:containerView];
+        [self addSubview:_headerDotsRow];
     }
     return self;
 }
 
+- (void)layoutSubviews {
+    [super layoutSubviews];
+    
+    CGFloat width = self.bounds.size.width;
+    if (width <= 0) return;
+    CGFloat midX = width / 2.0;
+    
+    _headerLogoView.frame = CGRectMake(midX - 32.0, 16.0, 64.0, 64.0);
+    _headerTitleLabel.frame = CGRectMake(0.0, 88.0, width, 36.0);
+    _headerSubtitleLabel.frame = CGRectMake(0.0, 126.0, width, 22.0);
+    _headerDotsRow.frame = CGRectMake(midX - 40.0, 154.0, 80.0, 8.0);
+}
+
 - (CGFloat)preferredHeightForWidth:(CGFloat)width {
+    return 180.0;
+}
+
+- (CGFloat)preferredHeightForWidth:(CGFloat)width inTableView:(id)tableView {
     return 180.0;
 }
 
