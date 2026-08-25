@@ -8,6 +8,7 @@ BUNDLE_NAME = DePukeCC
 DePukeCC_BUNDLE_EXTENSION = bundle
 DePukeCC_FILES = DePukeCC.m
 DePukeCC_FRAMEWORKS = UIKit QuartzCore
+DePukeCC_PRIVATE_FRAMEWORKS = ControlCenterUIKit
 DePukeCC_LDFLAGS = -undefined dynamic_lookup
 DePukeCC_INSTALL_PATH = /Library/ControlCenter/Bundles
 DePukeCC_CFLAGS = -fobjc-arc -I../ -Wall
