@@ -85,13 +85,9 @@ extern char **environ;
 @implementation DePukeHeaderView
 
 - (instancetype)initWithSpecifier:(PSSpecifier *)specifier {
-    self = [super initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"DePukeHeaderView" specifier:specifier];
+    self = [super initWithFrame:CGRectZero];
     if (self) {
         self.backgroundColor = [UIColor clearColor];
-        self.contentView.backgroundColor = [UIColor clearColor];
-        if (@available(iOS 14.0, *)) {
-            self.backgroundConfiguration = [UIBackgroundConfiguration clearConfiguration];
-        }
         
         // Logo ImageView
         _headerLogoView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 64.0, 64.0)];
@@ -111,7 +107,7 @@ extern char **environ;
             }
         }
         _headerLogoView.image = logoImg;
-        [self.contentView addSubview:_headerLogoView];
+        [self addSubview:_headerLogoView];
         
         // Title Label
         _headerTitleLabel = [[UILabel alloc] init];
@@ -119,7 +115,7 @@ extern char **environ;
         _headerTitleLabel.textAlignment = NSTextAlignmentCenter;
         _headerTitleLabel.font = [UIFont systemFontOfSize:28 weight:UIFontWeightBold];
         _headerTitleLabel.textColor = [UIColor labelColor];
-        [self.contentView addSubview:_headerTitleLabel];
+        [self addSubview:_headerTitleLabel];
         
         // Subtitle Label
         _headerSubtitleLabel = [[UILabel alloc] init];
@@ -127,7 +123,7 @@ extern char **environ;
         _headerSubtitleLabel.textAlignment = NSTextAlignmentCenter;
         _headerSubtitleLabel.font = [UIFont systemFontOfSize:14 weight:UIFontWeightMedium];
         _headerSubtitleLabel.textColor = [UIColor secondaryLabelColor];
-        [self.contentView addSubview:_headerSubtitleLabel];
+        [self addSubview:_headerSubtitleLabel];
         
         // Animated Cue Dot Indicator preview
         _headerDotsRow = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 80.0, 8.0)];
@@ -137,7 +133,7 @@ extern char **environ;
             miniDot.backgroundColor = [UIColor colorWithRed:0.20 green:0.60 blue:1.0 alpha:0.8];
             [_headerDotsRow addSubview:miniDot];
         }
-        [self.contentView addSubview:_headerDotsRow];
+        [self addSubview:_headerDotsRow];
     }
     return self;
 }
@@ -145,13 +141,8 @@ extern char **environ;
 - (void)layoutSubviews {
     [super layoutSubviews];
     
-    self.backgroundColor = [UIColor clearColor];
-    self.contentView.backgroundColor = [UIColor clearColor];
-    if (@available(iOS 14.0, *)) {
-        self.backgroundConfiguration = [UIBackgroundConfiguration clearConfiguration];
-    }
-    
-    CGFloat width = self.contentView.bounds.size.width;
+    CGFloat width = self.bounds.size.width;
+    if (width <= 0) return;
     CGFloat midX = width / 2.0;
     
     _headerLogoView.frame = CGRectMake(midX - 32.0, 16.0, 64.0, 64.0);
@@ -161,6 +152,10 @@ extern char **environ;
 }
 
 - (CGFloat)preferredHeightForWidth:(CGFloat)width {
+    return 180.0;
+}
+
+- (CGFloat)preferredHeightForWidth:(CGFloat)width inTableView:(id)tableView {
     return 180.0;
 }
 
