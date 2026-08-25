@@ -81,33 +81,54 @@ extern char **environ;
     if (self) {
         self.backgroundColor = [UIColor clearColor];
         
-        UIView *containerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 130)];
+        UIView *containerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 180)];
         containerView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
         
+        // Logo ImageView
+        UIImageView *logoView = [[UIImageView alloc] initWithFrame:CGRectMake((containerView.frame.size.width - 64) / 2.0, 16, 64, 64)];
+        logoView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
+        logoView.contentMode = UIViewContentModeScaleAspectFit;
+        logoView.layer.cornerRadius = 14.0;
+        if (@available(iOS 13.0, *)) {
+            logoView.layer.cornerCurve = kCACornerCurveContinuous;
+        }
+        logoView.layer.masksToBounds = YES;
+        
+        NSBundle *bundle = [NSBundle bundleForClass:[self class]];
+        UIImage *logoImg = [UIImage imageNamed:@"logo" inBundle:bundle compatibleWithTraitCollection:nil];
+        if (!logoImg) {
+            NSString *logoPath = [bundle pathForResource:@"logo@3x" ofType:@"png"] ?: [bundle pathForResource:@"logo" ofType:@"png"];
+            if (logoPath) {
+                logoImg = [UIImage imageWithContentsOfFile:logoPath];
+            }
+        }
+        logoView.image = logoImg;
+        [containerView addSubview:logoView];
+        
         // Title Label
-        UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 20, containerView.frame.size.width, 42)];
+        UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 88, containerView.frame.size.width, 36)];
         titleLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth;
         titleLabel.text = @"DePuke";
         titleLabel.textAlignment = NSTextAlignmentCenter;
-        titleLabel.font = [UIFont systemFontOfSize:34 weight:UIFontWeightBold];
+        titleLabel.font = [UIFont systemFontOfSize:28 weight:UIFontWeightBold];
         titleLabel.textColor = [UIColor labelColor];
         [containerView addSubview:titleLabel];
         
         // Subtitle Label
-        UILabel *subtitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 64, containerView.frame.size.width, 24)];
+        UILabel *subtitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 126, containerView.frame.size.width, 22)];
         subtitleLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth;
         subtitleLabel.text = @"Vehicle Motion Cues Backport";
         subtitleLabel.textAlignment = NSTextAlignmentCenter;
-        subtitleLabel.font = [UIFont systemFontOfSize:15 weight:UIFontWeightMedium];
+        subtitleLabel.font = [UIFont systemFontOfSize:14 weight:UIFontWeightMedium];
         subtitleLabel.textColor = [UIColor secondaryLabelColor];
         [containerView addSubview:subtitleLabel];
         
         // Animated Cue Dot Indicator preview
-        UIView *dotsRow = [[UIView alloc] initWithFrame:CGRectMake((containerView.frame.size.width - 100) / 2.0, 96, 100, 12)];
+        UIView *dotsRow = [[UIView alloc] initWithFrame:CGRectMake((containerView.frame.size.width - 80) / 2.0, 154, 80, 8)];
         dotsRow.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
         for (int i = 0; i < 5; i++) {
-            UIView *miniDot = [[UIView alloc] initWithFrame:CGRectMake(i * 22, 2, 8, 8)];
-            miniDot.layer.cornerRadius = 4.0;
+            UIView *miniDot = [[UIView alloc] initWithFrame:CGRectMake(i * 18, 1, 6, 6)];
+            miniDot.layer.cornerRadius = 3.0;
             miniDot.backgroundColor = [UIColor colorWithRed:0.20 green:0.60 blue:1.0 alpha:0.8];
             [dotsRow addSubview:miniDot];
         }
@@ -119,7 +140,7 @@ extern char **environ;
 }
 
 - (CGFloat)preferredHeightForWidth:(CGFloat)width {
-    return 130.0;
+    return 180.0;
 }
 
 @end
