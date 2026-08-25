@@ -18,12 +18,18 @@ jobs:
         with:
           submodules: recursive
 
-      - name: Setup Theos
-        uses: theos/action-setup-theos@v1
-
-      - name: Setup iOS SDK
+      - name: Install Build Dependencies
         run: |
-          git clone --quiet --depth=1 https://github.com/theos/sdks.git $THEOS/sdks
+          brew install ldid dpkg
+
+      - name: Setup Theos
+        run: |
+          git clone --recursive https://github.com/theos/theos.git ~/theos
+          echo "THEOS=$HOME/theos" >> $GITHUB_ENV
+
+      - name: Setup iOS SDKs
+        run: |
+          git clone --quiet --depth=1 https://github.com/theos/sdks.git ~/theos/sdks
 
       - name: Compile & Package Rootless Tweak
         run: |
