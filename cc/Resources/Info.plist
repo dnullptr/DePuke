@@ -22,12 +22,28 @@
     <string>DePukeCC</string>
     <key>CFBundleDisplayName</key>
     <string>DePuke</string>
+    <key>CFBundleName</key>
+    <string>DePuke</string>
     <key>CCSModuleSize</key>
     <dict>
-        <key>Rows</key>
-        <integer>1</integer>
-        <key>Columns</key>
-        <integer>1</integer>
+        <key>Portrait</key>
+        <dict>
+            <key>Width</key>
+            <integer>1</integer>
+            <key>Height</key>
+            <integer>1</integer>
+        </dict>
+        <key>Landscape</key>
+        <dict>
+            <key>Width</key>
+            <integer>1</integer>
+            <key>Height</key>
+            <integer>1</integer>
+        </dict>
     </dict>
+    <key>CCSSupportedModuleSizes</key>
+    <array>
+        <string>1x1</string>
+    </array>
 </dict>
 </plist>
