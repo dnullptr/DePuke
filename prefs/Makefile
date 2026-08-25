@@ -7,8 +7,8 @@ include $(THEOS)/makefiles/common.mk
 BUNDLE_NAME = DePukePrefs
 
 DePukePrefs_FILES = DePukeListController.m
-DePukePrefs_FRAMEWORKS = UIKit
-DePukePrefs_PRIVATE_FRAMEWORKS = Preferences
+DePukePrefs_FRAMEWORKS = UIKit CoreGraphics QuartzCore
+DePukePrefs_LDFLAGS = -undefined dynamic_lookup
 DePukePrefs_INSTALL_PATH = /Library/PreferenceBundles
 DePukePrefs_CFLAGS = -fobjc-arc -I../ -Wall
 
