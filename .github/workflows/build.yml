@@ -1,0 +1,38 @@
+name: Build DePuke Package
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Build Rootless .deb
+    runs-on: macos-14
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Setup Theos
+        uses: theos/action-setup-theos@v1
+
+      - name: Setup iOS SDK
+        run: |
+          git clone --quiet --depth=1 https://github.com/theos/sdks.git $THEOS/sdks
+
+      - name: Compile & Package Rootless Tweak
+        run: |
+          make clean
+          make package FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
+
+      - name: Upload Debian Package
+        uses: actions/upload-artifact@v4
+        with:
+          name: DePuke-Rootless-deb
+          path: packages/*.deb
+          if-no-files-found: error

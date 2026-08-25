@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>items</key>
+    <array>
+        <!-- Banner / Header -->
+        <dict>
+            <key>cell</key>
+            <string>PSGroupCell</string>
+            <key>headerCellClass</key>
+            <string>DePukeHeaderView</string>
+        </dict>
+
+        <!-- Master Section -->
+        <dict>
+            <key>cell</key>
+            <string>PSGroupCell</string>
+            <key>label</key>
+            <string>Activation</string>
+            <key>footerText</key>
+            <string>When "Only in Vehicle" is active, CoreMotion activity recognition automatically engages the motion cues whenever automotive movement is detected.</string>
+        </dict>
+        <dict>
+            <key>cell</key>
+            <string>PSSwitchCell</string>
+            <key>default</key>
+            <true/>
+            <key>defaults</key>
+            <string>com.dnullptr.depuke</string>
+            <key>key</key>
+            <string>kEnabled</string>
+            <key>label</key>
+            <string>Enable Motion Cues</string>
+            <key>PostNotification</key>
+            <string>com.dnullptr.depuke/ReloadPrefs</string>
+        </dict>
+        <dict>
+            <key>cell</key>
+            <string>PSSwitchCell</string>
+            <key>default</key>
+            <false/>
+            <key>defaults</key>
+            <string>com.dnullptr.depuke</string>
+            <key>key</key>
+            <string>kAutoDetect</string>
+            <key>label</key>
+            <string>Only in Vehicle (Auto)</string>
+            <key>PostNotification</key>
+            <string>com.dnullptr.depuke/ReloadPrefs</string>
+        </dict>
+
+        <!-- Appearance Section -->
+        <dict>
+            <key>cell</key>
+            <string>PSGroupCell</string>
+            <key>label</key>
+            <string>Visual Theme</string>
+        </dict>
+        <dict>
+            <key>cell</key>
+            <string>PSSegmentCell</string>
+            <key>default</key>
+            <integer>0</integer>
+            <key>defaults</key>
+            <string>com.dnullptr.depuke</string>
+            <key>key</key>
+            <string>kThemeMode</string>
+            <key>validTitles</key>
+            <array>
+                <string>Dark (iOS 18)</string>
+                <string>Light</string>
+                <string>Cyan Glow</string>
+            </array>
+            <key>validValues</key>
+            <array>
+                <integer>0</integer>
+                <integer>1</integer>
+                <integer>2</integer>
+            </array>
+            <key>PostNotification</key>
+            <string>com.dnullptr.depuke/ReloadPrefs</string>
+        </dict>
+        <dict>
+            <key>cell</key>
+            <string>PSGroupCell</string>
+            <key>label</key>
+            <string>Dot Count (Total)</string>
+        </dict>
+        <dict>
+            <key>cell</key>
+            <string>PSSegmentCell</string>
+            <key>default</key>
+            <integer>8</integer>
+            <key>defaults</key>
+            <string>com.dnullptr.depuke</string>
+            <key>key</key>
+            <string>kDotCount</string>
+            <key>validTitles</key>
+            <array>
+                <string>4 Dots</string>
+                <string>8 Dots</string>
+                <string>12 Dots</string>
+                <string>16 Dots</string>
+            </array>
+            <key>validValues</key>
+            <array>
+                <integer>4</integer>
+                <integer>8</integer>
+                <integer>12</integer>
+                <integer>16</integer>
+            </array>
+            <key>PostNotification</key>
+            <string>com.dnullptr.depuke/ReloadPrefs</string>
+        </dict>
+        <dict>
+            <key>cell</key>
+            <string>PSGroupCell</string>
+            <key>label</key>
+            <string>Dot Radius</string>
+        </dict>
+        <dict>
+            <key>cell</key>
+            <string>PSSliderCell</string>
+            <key>default</key>
+            <real>8.0</real>
+            <key>defaults</key>
+            <string>com.dnullptr.depuke</string>
+            <key>key</key>
+            <string>kDotSize</string>
+            <key>min</key>
+            <real>4.0</real>
+            <key>max</key>
+            <real>20.0</real>
+            <key>showValue</key>
+            <true/>
+            <key>PostNotification</key>
+            <string>com.dnullptr.depuke/ReloadPrefs</string>
+        </dict>
+        <dict>
+            <key>cell</key>
+            <string>PSGroupCell</string>
+            <key>label</key>
+            <string>Opacity</string>
+        </dict>
+        <dict>
+            <key>cell</key>
+            <string>PSSliderCell</string>
+            <key>default</key>
+            <real>0.75</real>
+            <key>defaults</key>
+            <string>com.dnullptr.depuke</string>
+            <key>key</key>
+            <string>kDotAlpha</string>
+            <key>min</key>
+            <real>0.2</real>
+            <key>max</key>
+            <real>1.0</real>
+            <key>showValue</key>
+            <true/>
+            <key>PostNotification</key>
+            <string>com.dnullptr.depuke/ReloadPrefs</string>
+        </dict>
+
+        <!-- Physics & Sensitivity -->
+        <dict>
+            <key>cell</key>
+            <string>PSGroupCell</string>
+            <key>label</key>
+            <string>Sensitivity (G-Force Gain)</string>
+        </dict>
+        <dict>
+            <key>cell</key>
+            <string>PSSliderCell</string>
+            <key>default</key>
+            <real>1.0</real>
+            <key>defaults</key>
+            <string>com.dnullptr.depuke</string>
+            <key>key</key>
+            <string>kSensitivity</string>
+            <key>min</key>
+            <real>0.2</real>
+            <key>max</key>
+            <real>3.0</real>
+            <key>showValue</key>
+            <true/>
+            <key>PostNotification</key>
+            <string>com.dnullptr.depuke/ReloadPrefs</string>
+        </dict>
+        <dict>
+            <key>cell</key>
+            <string>PSGroupCell</string>
+            <key>label</key>
+            <string>LPF Smoothing Factor</string>
+            <key>footerText</key>
+            <string>Higher smoothing reduces jitter from road bumps and vibrations.</string>
+        </dict>
+        <dict>
+            <key>cell</key>
+            <string>PSSliderCell</string>
+            <key>default</key>
+            <real>0.15</real>
+            <key>defaults</key>
+            <string>com.dnullptr.depuke</string>
+            <key>key</key>
+            <string>kSmoothing</string>
+            <key>min</key>
+            <real>0.02</real>
+            <key>max</key>
+            <real>0.50</real>
+            <key>showValue</key>
+            <true/>
+            <key>PostNotification</key>
+            <string>com.dnullptr.depuke/ReloadPrefs</string>
+        </dict>
+        <dict>
+            <key>cell</key>
+            <string>PSGroupCell</string>
+            <key>label</key>
+            <string>Maximum Travel Offset (Points)</string>
+        </dict>
+        <dict>
+            <key>cell</key>
+            <string>PSSliderCell</string>
+            <key>default</key>
+            <real>40.0</real>
+            <key>defaults</key>
+            <string>com.dnullptr.depuke</string>
+            <key>key</key>
+            <string>kMaxOffset</string>
+            <key>min</key>
+            <real>10.0</real>
+            <key>max</key>
+            <real>100.0</real>
+            <key>showValue</key>
+            <true/>
+            <key>PostNotification</key>
+            <string>com.dnullptr.depuke/ReloadPrefs</string>
+        </dict>
+
+        <!-- Actions -->
+        <dict>
+            <key>cell</key>
+            <string>PSGroupCell</string>
+            <key>label</key>
+            <string>Quick Actions</string>
+            <key>footerText</key>
+            <string>Live settings apply immediately via Darwin notify center. Respring is only needed to reload SpringBoard clean state.</string>
+        </dict>
+        <dict>
+            <key>cell</key>
+            <string>PSButtonCell</string>
+            <key>label</key>
+            <string>Respring SpringBoard</string>
+            <key>action</key>
+            <string>respring</string>
+        </dict>
+        <dict>
+            <key>cell</key>
+            <string>PSButtonCell</string>
+            <key>label</key>
+            <string>Reset to Defaults</string>
+            <key>action</key>
+            <string>resetDefaults</string>
+        </dict>
+
+        <!-- Footer -->
+        <dict>
+            <key>cell</key>
+            <string>PSGroupCell</string>
+            <key>footerAlignment</key>
+            <integer>1</integer>
+            <key>footerText</key>
+            <string>DePuke v1.0.0
+Vehicle Motion Cues Backport for Rootless iOS 15 - 16</string>
+        </dict>
+    </array>
+    <key>title</key>
+    <string>DePuke</string>
+</dict>
+</plist>
