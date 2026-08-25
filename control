@@ -4,7 +4,7 @@ Depends: mobilesubstrate (>= 0.9.5000), preferenceloader
 Version: 1.0.0
 Architecture: iphoneos-arm64
 Description: Backport of iOS 18 Vehicle Motion Cues for iOS 15.0 - 16.5+ (Rootless).
-Maintainer: Developer
-Author: Developer
+Maintainer: dnullptr
+Author: dnullptr
 Section: Tweaks
-Tag: role::developer
+Tag: role::tweaks
