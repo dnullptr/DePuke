@@ -24,6 +24,17 @@
     <string>DePuke</string>
     <key>CFBundleName</key>
     <string>DePuke</string>
+    <key>UIDeviceFamily</key>
+    <array>
+        <integer>1</integer>
+        <integer>2</integer>
+    </array>
+    <key>CFBundleSupportedPlatforms</key>
+    <array>
+        <string>iPhoneOS</string>
+    </array>
+    <key>MinimumOSVersion</key>
+    <string>15.0</string>
     <key>CCSModuleSize</key>
     <dict>
         <key>Portrait</key>
