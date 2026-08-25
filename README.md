@@ -3,10 +3,11 @@
 <img src="prefs/Resources/logo-large.png" width="130" height="130" alt="DePuke Logo" style="border-radius: 28px; box-shadow: 0 8px 24px rgba(0,0,0,0.25);" />
 
 # 🚗 DePuke
-### *Stop barfing in the passenger seat. iOS 18 Vehicle Motion Cues, backported to iOS 15 & 16.*
+### *Stop barfing in the passenger seat. iOS 18 Vehicle Motion Cues, backported to iOS 15, 16 & 17.0.*
 
-[![iOS Support](https://img.shields.io/badge/iOS-15.0_--_16.5+-000000?style=for-the-badge&logo=apple&logoColor=white)](https://github.com/dnullptr/DePuke)
+[![iOS Support](https://img.shields.io/badge/iOS-15.0_--_17.0_(Tested)-000000?style=for-the-badge&logo=apple&logoColor=white)](https://github.com/dnullptr/DePuke)
 [![Rootless](https://img.shields.io/badge/Jailbreak-Rootless-ff5555?style=for-the-badge&logo=cydia&logoColor=white)](https://github.com/dnullptr/DePuke)
+[![Donate](https://img.shields.io/badge/Donate-PayPal-00457C?style=for-the-badge&logo=paypal&logoColor=white)](https://paypal.me/dnullptr)
 [![License](https://img.shields.io/badge/License-MIT-00c853?style=for-the-badge)](LICENSE)
 
 </div>
@@ -18,7 +19,7 @@ Look, we’ve all been there: you’re riding shotgun or stuck in the back of an
 
 Apple dropped **Vehicle Motion Cues** in iOS 18 to fix sensory conflict by putting animated edge dots that sway with the car’s G-forces so your brain doesn’t think you're getting poisoned.
 
-**DePuke** brings that exact feature straight to your jailbroken iOS 15.0 – 16.5+ device. No iOS 18 update needed. No forced stock OS. Just smooth, pure motion relief.
+**DePuke** brings that exact feature straight to your jailbroken **iOS 15.0 – 17.0** device (confirmed & tested on iOS 17.0). No iOS 18 update needed. No forced stock OS. Just smooth, pure motion relief.
 
 ---
 
@@ -56,14 +57,26 @@ DePuke counters this with inverted visual inertia:
 ## 📲 Installation
 
 ### Requirements
-- A jailbroken device running **iOS 15.0 – 16.5+** (or iOS 16.6 beta).
-- Modern Rootless jailbreak: **Dopamine**, **Palera1n (Rootless)**, or **XinaA15 v2**.
+- A jailbroken device running **iOS 15.0 – 17.0** (tested working on iOS 17.0).
+- Modern Rootless jailbreak / environment: **Dopamine**, **Palera1n (Rootless)**, **Bootstrap / Serotonin**, or **XinaA15 v2**.
 - Package managers: **Sileo** / **Zebra**.
 
 ### Grab the `.deb`
 1. Download the latest `com.dnullptr.depuke_*.deb` from the [Releases](https://github.com/dnullptr/DePuke/releases) tab (or GitHub Actions artifacts).
 2. Open in **Sileo** / **Zebra** and hit **Get / Install**.
 3. Respring and jump into **Settings → DePuke** to dial in your prefs.
+
+---
+
+## ⚙️ Configuration & Options
+
+Inside `Settings.app` → `DePuke`:
+
+- **Enable Motion Cues**: Master toggle on/off.
+- **Only in Vehicle (Auto)**: Background CoreMotion engine only turns it on when inside a car/bus/train.
+- **Visual Theme**: Switch between Apple Dark, Clean Light, or Cyan Accent.
+- **Dot Count**: Choose between 4 to 16 edge tracking dots.
+- **Sensitivity & Smoothing**: Tune the responsiveness to your car’s suspension stiffness.
 
 ---
 
@@ -85,15 +98,15 @@ The compiled package will drop into the `packages/` directory ready to install v
 
 ---
 
-## ⚙️ Configuration & Options
+## ☕ Support / Buy Me a Coffee
 
-Inside `Settings.app` → `DePuke`:
+If DePuke saved your stomach on your daily commute or road trips, consider tossing a coffee my way to support ongoing development and tweaks!
 
-- **Enable Motion Cues**: Master toggle on/off.
-- **Only in Vehicle (Auto)**: Background CoreMotion engine only turns it on when inside a car/bus/train.
-- **Visual Theme**: Switch between Apple Dark, Clean Light, or Cyan Accent.
-- **Dot Count**: Choose between 4 to 16 edge tracking dots.
-- **Sensitivity & Smoothing**: Tune the responsiveness to your car’s suspension stiffness.
+<div align="center">
+
+[![Donate with PayPal](https://img.shields.io/badge/Donate-PayPal-00457C?style=for-the-badge&logo=paypal&logoColor=white)](https://paypal.me/dnullptr)
+
+</div>
 
 ---
 
@@ -107,6 +120,6 @@ Inside `Settings.app` → `DePuke`:
 
 <div align="center">
 
-Made with ❤️ and motion sickness pills by **dnullptr**.
+Made with ❤️ and motion sickness pills by **[dnullptr](https://github.com/dnullptr)**.
 
 </div>

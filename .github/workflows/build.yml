@@ -2,7 +2,9 @@ name: Build DePuke Package
 
 on:
   push:
-    branches: [ main, master, dist ]
+
+    branches: [ main, master ]
+
     tags:
       - 'v*'
   pull_request:
