@@ -29,19 +29,13 @@ extern char **environ;
 
 - (void)performRespring {
     pid_t pid;
-    const char *sbreload = "/var/jb/usr/bin/sbreload";
-    if (access(sbreload, F_OK) != 0) {
-        sbreload = "/usr/bin/sbreload";
-    }
+    const char *sbreload = [DEPUKE_JBROOT(@"/usr/bin/sbreload") fileSystemRepresentation];
     
     if (access(sbreload, F_OK) == 0) {
         const char *argv[] = {sbreload, NULL};
         posix_spawn(&pid, sbreload, NULL, NULL, (char *const *)argv, environ);
     } else {
-        const char *killall = "/var/jb/usr/bin/killall";
-        if (access(killall, F_OK) != 0) {
-            killall = "/usr/bin/killall";
-        }
+        const char *killall = [DEPUKE_JBROOT(@"/usr/bin/killall") fileSystemRepresentation];
         const char *argv[] = {killall, "-9", "SpringBoard", NULL};
         posix_spawn(&pid, killall, NULL, NULL, (char *const *)argv, environ);
     }
@@ -54,8 +48,7 @@ extern char **environ;
     
     [alert addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil]];
     [alert addAction:[UIAlertAction actionWithTitle:@"Reset" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
-        NSString *path = DePukePreferencePath();
-        [[NSFileManager defaultManager] removeItemAtPath:path error:nil];
+        DePukeResetPreferences();
         
         CFNotificationCenterPostNotification(
             CFNotificationCenterGetDarwinNotifyCenter(),

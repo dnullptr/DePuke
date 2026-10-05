@@ -16,8 +16,16 @@ permissions:
 
 jobs:
   build:
-    name: Build Rootless .deb
+    name: Build ${{ matrix.scheme }} .deb
     runs-on: macos-14
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - scheme: rootless
+            theos: https://github.com/theos/theos.git
+          - scheme: roothide
+            theos: https://github.com/roothide/theos.git
 
     steps:
       - name: Checkout Repository
@@ -31,7 +39,7 @@ jobs:
 
       - name: Setup Theos
         run: |
-          git clone --recursive https://github.com/theos/theos.git ~/theos
+          git clone --recursive ${{ matrix.theos }} ~/theos
           echo "THEOS=$HOME/theos" >> $GITHUB_ENV
 
       - name: Setup iOS SDKs
@@ -39,15 +47,15 @@ jobs:
           rm -rf ~/theos/sdks
           git clone --quiet --depth=1 https://github.com/theos/sdks.git ~/theos/sdks
 
-      - name: Compile & Package Rootless Tweak
+      - name: Compile & Package (${{ matrix.scheme }})
         run: |
           make clean
-          make package FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
+          make package FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=${{ matrix.scheme }}
 
       - name: Upload Debian Package Artifact
         uses: actions/upload-artifact@v4
         with:
-          name: DePuke-Rootless-deb
+          name: DePuke-${{ matrix.scheme }}-deb
           path: packages/*.deb
           if-no-files-found: error
 

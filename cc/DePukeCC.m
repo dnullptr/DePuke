@@ -51,26 +51,12 @@ static void CCReloadPreferencesNotificationCallback(CFNotificationCenterRef cent
 }
 
 - (BOOL)isSelected {
-    NSString *path = DePukePreferencePath();
-    NSDictionary *prefs = [NSDictionary dictionaryWithContentsOfFile:path];
-    if (prefs && prefs[kDePukeEnabledKey]) {
-        return [prefs[kDePukeEnabledKey] boolValue];
-    }
-    return YES;
+    id enabledVal = DePukeCopyPreferences()[kDePukeEnabledKey];
+    return enabledVal ? [enabledVal boolValue] : YES;
 }
 
 - (void)setSelected:(BOOL)selected {
-    NSString *path = DePukePreferencePath();
-    NSMutableDictionary *prefs = [NSMutableDictionary dictionaryWithContentsOfFile:path];
-    if (!prefs) {
-        prefs = [NSMutableDictionary dictionary];
-    }
-    prefs[kDePukeEnabledKey] = @(selected);
-    
-    // Ensure parent directory exists before writing
-    NSString *parentDir = [path stringByDeletingLastPathComponent];
-    [[NSFileManager defaultManager] createDirectoryAtPath:parentDir withIntermediateDirectories:YES attributes:nil error:nil];
-    [prefs writeToFile:path atomically:YES];
+    DePukeSetPreference(kDePukeEnabledKey, @(selected));
 
     // Post Darwin notification to update SpringBoard overlay live
     CFNotificationCenterPostNotification(

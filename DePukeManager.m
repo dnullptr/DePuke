@@ -87,37 +87,34 @@
 }
 
 - (void)loadPreferences {
-    NSString *path = DePukePreferencePath();
-    NSDictionary *prefs = [NSDictionary dictionaryWithContentsOfFile:path];
+    NSDictionary *prefs = DePukeCopyPreferences();
     
-    if (prefs) {
-        id enabledVal = prefs[kDePukeEnabledKey];
-        self.enabled = enabledVal ? [enabledVal boolValue] : YES;
-        
-        id sensVal = prefs[kDePukeSensitivityKey];
-        self.sensitivity = sensVal ? [sensVal doubleValue] : 1.0;
-        
-        id sizeVal = prefs[kDePukeDotSizeKey];
-        self.dotSize = sizeVal ? [sizeVal doubleValue] : 8.0;
-        
-        id countVal = prefs[kDePukeDotCountKey];
-        self.dotCount = countVal ? [countVal integerValue] : 8;
-        
-        id alphaVal = prefs[kDePukeDotAlphaKey];
-        self.dotAlpha = alphaVal ? [alphaVal doubleValue] : 0.75;
-        
-        id smoothVal = prefs[kDePukeSmoothingKey];
-        self.smoothingAlpha = smoothVal ? [smoothVal doubleValue] : 0.15;
-        
-        id autoVal = prefs[kDePukeAutoDetectKey];
-        self.autoDetect = autoVal ? [autoVal boolValue] : NO;
-        
-        id maxOffsetVal = prefs[kDePukeMaxOffsetKey];
-        self.maxOffset = maxOffsetVal ? [maxOffsetVal doubleValue] : 40.0;
-        
-        id themeVal = prefs[kDePukeThemeModeKey];
-        self.themeMode = themeVal ? [themeVal integerValue] : 0;
-    }
+    id enabledVal = prefs[kDePukeEnabledKey];
+    self.enabled = enabledVal ? [enabledVal boolValue] : YES;
+    
+    id sensVal = prefs[kDePukeSensitivityKey];
+    self.sensitivity = sensVal ? [sensVal doubleValue] : 1.0;
+    
+    id sizeVal = prefs[kDePukeDotSizeKey];
+    self.dotSize = sizeVal ? [sizeVal doubleValue] : 8.0;
+    
+    id countVal = prefs[kDePukeDotCountKey];
+    self.dotCount = countVal ? [countVal integerValue] : 8;
+    
+    id alphaVal = prefs[kDePukeDotAlphaKey];
+    self.dotAlpha = alphaVal ? [alphaVal doubleValue] : 0.75;
+    
+    id smoothVal = prefs[kDePukeSmoothingKey];
+    self.smoothingAlpha = smoothVal ? [smoothVal doubleValue] : 0.15;
+    
+    id autoVal = prefs[kDePukeAutoDetectKey];
+    self.autoDetect = autoVal ? [autoVal boolValue] : NO;
+    
+    id maxOffsetVal = prefs[kDePukeMaxOffsetKey];
+    self.maxOffset = maxOffsetVal ? [maxOffsetVal doubleValue] : 40.0;
+    
+    id themeVal = prefs[kDePukeThemeModeKey];
+    self.themeMode = themeVal ? [themeVal integerValue] : 0;
     
     if (self.overlayWindow) {
         [self.overlayWindow configureDotsWithCount:self.dotCount
